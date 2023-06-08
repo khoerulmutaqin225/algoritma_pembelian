@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "Custome Pembelian",
+    'name': "Custome Pembelian V6",
 
     'summary': """
         Module Custome Pembelian """,

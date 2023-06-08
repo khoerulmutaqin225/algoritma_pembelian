@@ -30,16 +30,16 @@
                         </group>
                     </group>
                     <notebook>
-                        <page string="Product">
-                            <field name="algoritma_pembelian_ids" nolabel="1" options="{'reload_on_button': True}">
-                                <group edit="true" editable="bottom" create="true" delete="true">
-                                    <field name="display_name"/>
-                                    <field name="quantity"/>
-                                    <filed name="uom_id"/>
-                                </group>
-                            </field>
-                        </page>
-                    </notebook>
+							<page string="Product">
+								<field name="algoritma_pembelian_ids" nolable="1" options="'{reload_on_button':True}">
+									<tree edit="true" editable="bottom" create="true">
+										<field name="product_id" />
+										<field name="quantity" />
+										<field name="uom_id" />
+									</tree>
+								</field>
+							</page>
+						</notebook>
                 </sheet>
             </form>
         </field>
