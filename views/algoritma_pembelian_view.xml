@@ -38,7 +38,7 @@
 							<page string="Product">
 								<field name="algoritma_pembelian_ids" nolable="1" options="'{reload_on_button':True}">
 									<tree edit="true" editable="bottom" create="true">
-										<field name="product_id" />
+										<field name="product_id" domain="[('type', '=', 'service' )]" />
 										<field name="description" />
 										<field name="quantity" />
 										<field name="uom_id" />

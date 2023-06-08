@@ -1,23 +1,24 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8"?>
 <odoo>
     <record id="pembelian_actions_id" model="ir.actions.act_window">
         <field name="name">Pembelian</field>
         <field name="res_model">algoritma.pembelian</field>
+        <field name="domain">[('status', '=', 'draft')]</field>
     </record>
 
     <record id="pembelian_actions_tree_view_id" model="ir.actions.act_window.view">
-        <field name="sequence" eval="1"/>
+        <field name="sequence" eval="1" />
         <field name="view_mode">tree</field>
-        <field name="view_id" ref="algoritma_pembelian.algoritma_pembelian_tree_view_id"/>
-        <field name="act_window_id" ref="algoritma_pembelian.pembelian_actions_id"/>
+        <field name="view_id" ref="algoritma_pembelian.algoritma_pembelian_tree_view_id" />
+        <field name="act_window_id" ref="algoritma_pembelian.pembelian_actions_id" />
     </record>
 
     <!--    membuat view kanban-->
     <record id="pembelian_actions_kanban_view_id" model="ir.actions.act_window.view">
-        <field name="sequence" eval="2"/>
+        <field name="sequence" eval="2" />
         <field name="view_mode">kanban</field>
-        <field name="view_id" ref="algoritma_pembelian.algoritma_pembelian_kanban_view_id"/>
-        <field name="act_window_id" ref="algoritma_pembelian.pembelian_actions_id"/>
+        <field name="view_id" ref="algoritma_pembelian.algoritma_pembelian_kanban_view_id" />
+        <field name="act_window_id" ref="algoritma_pembelian.pembelian_actions_id" />
     </record>
 
 
@@ -25,8 +26,8 @@
     <record id="pembelian_actions_form_view_id" model="ir.actions.act_window.view">
         <field name="sequence" eval="3" />
         <field name="view_mode">form</field>
-        <field name="view_id" ref="algoritma_pembelian.algoritma_pembelian_form_view_id"/>
-        <field name="act_window_id" ref="algoritma_pembelian.pembelian_actions_id"/>
+        <field name="view_id" ref="algoritma_pembelian.algoritma_pembelian_form_view_id" />
+        <field name="act_window_id" ref="algoritma_pembelian.pembelian_actions_id" />
     </record>
 
     <record id="brand_actions_id" model="ir.actions.act_window">
@@ -35,10 +36,10 @@
     </record>
 
     <record id="brand_actions_tree_view_id" model="ir.actions.act_window.view">
-        <field name="sequence" eval="1"/>
+        <field name="sequence" eval="1" />
         <field name="view_mode">tree</field>
-        <field name="view_id" ref="algoritma_pembelian.algoritma_brand_tree_view_id"/>
-        <field name="act_window_id" ref="algoritma_pembelian.brand_actions_id"/>
+        <field name="view_id" ref="algoritma_pembelian.algoritma_brand_tree_view_id" />
+        <field name="act_window_id" ref="algoritma_pembelian.brand_actions_id" />
     </record>
 
 </odoo>
