@@ -26,7 +26,8 @@
         'security/ir.model.access.csv',
         'views/algoritma_pembelian_view.xml',
         'views/algoritma_pembelian_action.xml',
-        'views/algoritma_pembelian_menuitem.xml'
+        'views/algoritma_pembelian_menuitem.xml',
+        'views/algoritma_pembelian_sequence.xml',
     ],
     # only loaded in demonstration mode
     'demo': [

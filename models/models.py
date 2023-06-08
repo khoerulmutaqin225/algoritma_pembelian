@@ -5,6 +5,9 @@ class algoritma_pembelian(models.Model):
     
     def func_to_approve(self):
         if self.status == 'draft':
+            if self.name == 'New':
+                seq = self.env['ir.sequence'].next_by_code('algoritma.pembelian') or 'New'
+                self.name = seq
             self.status = 'to_approve'
     
     def func_approve(self):
@@ -16,7 +19,7 @@ class algoritma_pembelian(models.Model):
             self.status = 'done'
 
 
-    name = fields.Char(string="Name")
+    name = fields.Char(string="Name", default="New")
 
     tanggal = fields.Date(string="Tanggal")
     status = fields.Selection([('draft','Draft'),('to_approve','To Approve'),('approved','Approved'),('done','Done')], default='draft')
