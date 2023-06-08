@@ -18,16 +18,17 @@
         <field name="arch" type="xml">
             <form>
                 <header>
-                    <button type="object" name="func_to_approve" string="To Approve" class="oe_highlight"/>
-                    <button type="object" name="func_approve" string="Approve" class="oe_highlight"/>
-                    <button type="object" name="func_done" string="Set to Done" class="oe_highlight"/>
+                    <!-- attrs= required/readonly/invisible -->
+                    <button type="object" name="func_to_approve" string="To Approve"  attrs="{'invisible': [('status', '!=', 'draft')]}" class="oe_highlight"/>
+                    <button type="object" name="func_approve" string="Approve" attrs="{'invisible': [('status', '!=', 'to_approve')]}" class="oe_highlight"/>
+                    <button type="object" name="func_done" string="Set to Done"  attrs="{'invisible': [('status', '!=', 'approve')]}" class="oe_highlight"/>
                     <field name="status" widget="statusbar"/>
                 </header>
                 <sheet>
                     <group>
                         <group>
-                            <field name="name"/>
-                            <field name="brand_ids" widget="many2many_tags"/>
+                            <field name="name"  attrs="{'readonly': [('status', '!=', 'draft')]}"/>
+                            <field name="brand_ids" widget="many2many_tags" attrs="{'required': [('status', '=', 'draft')]}"/>
                         </group>
                         <group>
                             <field name="tanggal"/>
