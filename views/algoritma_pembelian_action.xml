@@ -3,7 +3,9 @@
     <record id="pembelian_actions_id" model="ir.actions.act_window">
         <field name="name">Pembelian</field>
         <field name="res_model">algoritma.pembelian</field>
-        <field name="domain">[('status', '=', 'draft')]</field>
+        <!-- <field name="domain">[('status', '=', 'draft')]</field> -->
+        <field name="context">{'search_default_group_status':1}</field>
+        <field name="search_view_id" ref="algoritma_pembelian.algoritma_pembelian_search_view_id"/>
     </record>
 
     <record id="pembelian_actions_tree_view_id" model="ir.actions.act_window.view">

@@ -43,14 +43,15 @@ class algoritma_pembelian_line(models.Model):
         for line in self:
             line.sub_total = line.quantity *line.price
     
-    def _func_domain_product_id(self):
-        product_obj = self.env['product.product'].search([('type', '=', 'product')])
-        domain =[('id', 'in', product_obj.ids)]
-        return domain
+    # def _func_domain_product_id(self):
+    #     product_obj = self.env['product.product'].search([('type', '=', 'product')])
+    #     domain =[('id', 'in', product_obj.ids)]
+    #     return domain
         
 
     algoritma_pembelian_id = fields.Many2one('algoritma.pembelian', string="Algoritma Pembelian Id")
-    product_id = fields.Many2one('product.product', string="Product Id", domain=_func_domain_product_id)
+    # product_id = fields.Many2one('product.product', string="Product Id", domain=_func_domain_product_id)
+    product_id = fields.Many2one('product.product', string="Product Id")
     quantity = fields.Float(string="Quantity", default=0.0)
     uom_id = fields.Many2one('uom.uom', string="Uom Id")
     description = fields.Char('Description')

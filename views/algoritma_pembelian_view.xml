@@ -1,5 +1,32 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
+
+
+    <record id="algoritma_pembelian_search_view_id" model="ir.ui.view">
+        <field name="name">algoritma_pembelian_search_view_id</field>
+        <field name="model">algoritma.pembelian</field>
+        <field name="arch" type="xml">
+        <search>
+            <field name="name" string="Name" filter_domain="[('name','ilike', self)]"/>
+            <field name="algoritma_pembelian_ids" string="Product" filter_domain="[('algoritma_pembelian_ids.product_id.name','ilike', self)]"/>
+            
+            <filter string="Draft" name="status" domain="[('status','=', 'draft')]"/>
+            <filter string="To Approve" name="status" domain="[('status','=', 'to_approve')]"/>
+            <filter string="Approve" name="status" domain="[('status','=', 'approved')]"/>
+            <filter string="Done" name="status" domain="[('status','=', 'done')]"/>
+            
+            <group  string="Group By">
+                <filter name="Status" string="status" domain="[]" context="{'group_by': 'status'}" />
+            </group>
+        </search>
+
+
+        </field>
+
+
+    </record>
+
+
     <record id="algoritma_pembelian_tree_view_id" model="ir.ui.view">
         <field name="name">algoritma_pembelian_tree_view_id</field>
         <field name="model">algoritma.pembelian</field>
@@ -38,7 +65,8 @@
 							<page string="Product">
 								<field name="algoritma_pembelian_ids" nolable="1" options="'{reload_on_button':True}">
 									<tree edit="true" editable="bottom" create="true">
-										<field name="product_id" domain="[('type', '=', 'service' )]" />
+										<!-- <field name="product_id" domain="[('type', '=', 'service' )]" /> -->
+										<field name="product_id" />
 										<field name="description" />
 										<field name="quantity" />
 										<field name="uom_id" />
