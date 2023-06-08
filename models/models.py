@@ -25,12 +25,20 @@ class algoritma_pembelian_line(models.Model):
         else:
             self.description = self.product_id.name
             return{}
+    def _func_amount_total(self):
+        for line in self:
+            line.sub_total = line.quantity *line.price
 
     algoritma_pembelian_id = fields.Many2one('algoritma.pembelian', string="Algoritma Pembelian Id")
     product_id = fields.Many2one('product.product', string="Product Id")
     quantity = fields.Float(string="Quantity", default=0.0)
     uom_id = fields.Many2one('uom.uom', string="Uom Id")
     description = fields.Char('Description')
+    price = fields.Float(
+        'Price',
+         default=0.0
+    )
+    sub_total = fields.Float('Sub Total', compute=_func_amount_total)
 
 class algoritma_brand(models.Model):
     _name = 'algoritma.brand'

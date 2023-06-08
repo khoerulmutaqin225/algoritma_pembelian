@@ -38,6 +38,8 @@
 										<field name="description" />
 										<field name="quantity" />
 										<field name="uom_id" />
+										<field name="price" />
+										<field name="sub_total" />
 									</tree>
 								</field>
 							</page>
