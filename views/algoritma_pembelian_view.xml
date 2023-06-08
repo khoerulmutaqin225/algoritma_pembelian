@@ -18,6 +18,9 @@
         <field name="arch" type="xml">
             <form>
                 <header>
+                    <button type="object" name="func_to_approve" string="To Approve" class="oe_highlight"/>
+                    <button type="object" name="func_approve" string="Approve" class="oe_highlight"/>
+                    <button type="object" name="func_done" string="Set to Done" class="oe_highlight"/>
                     <field name="status" widget="statusbar"/>
                 </header>
                 <sheet>
