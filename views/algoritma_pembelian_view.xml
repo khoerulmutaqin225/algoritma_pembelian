@@ -24,6 +24,7 @@
                     <group>
                         <group>
                             <field name="name"/>
+                            <field name="brand_ids" widget="many2many_tags"/>
                         </group>
                         <group>
                             <field name="tanggal"/>
@@ -74,5 +75,13 @@
             </kanban>
         </field>
     </record>
-
+    <record id="algoritma_brand_tree_view_id" model="ir.ui.view">
+        <field name="name">algoritma_brand_tree_view_id</field>
+        <field name="model">algoritma.brand</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
 </odoo>
