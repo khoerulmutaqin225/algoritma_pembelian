@@ -92,6 +92,14 @@ class algoritma_brand(models.Model):
     _name = 'algoritma.brand'
 
     name = fields.Char(string="Name")
+
+class algoritma_pembelian_report_wizard(models.TransientModel):
+    _name = 'algoritma.pembelian.report.wizard'
+
+    name = fields.Char(string="Name")
+    periode_awal = fields.Date('Periode Awal')
+    periode_akhir = fields.Date('Periode Akhir')
+    
 # -*- coding: utf-8 -*-
 
 #from odoo import models, fields, _

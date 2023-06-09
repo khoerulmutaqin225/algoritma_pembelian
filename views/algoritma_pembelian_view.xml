@@ -1,24 +1,46 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8"?>
 <odoo>
 
+
+    <record id="algoritma_pembelian_report_wizard_view_id" model="ir.ui.view">
+        <field name="name">algoritma_pembelian_report_wizard_view_id</field>
+        <field name="model">algoritma.pembelian.report.wizard</field>
+        <field name="priority">999</field>
+        <field name="arch" type="xml">
+            <form string="Reporting Algoritma Pembelian">
+                <sheet>
+                    <group col="4">
+                        <field name="periode_awal" string="Periode Awal" />
+                        <field name="periode_akhir" string="Periode Akhir" />
+                    </group>
+                </sheet>
+                <footer>
+                    <button type="object" name="" string="Submit" class="btn-primary"/>
+                    <button string="Cancel" class="btn-default" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
 
     <record id="algoritma_pembelian_search_view_id" model="ir.ui.view">
         <field name="name">algoritma_pembelian_search_view_id</field>
         <field name="model">algoritma.pembelian</field>
         <field name="arch" type="xml">
-        <search>
-            <field name="name" string="Name" filter_domain="[('name','ilike', self)]"/>
-            <field name="algoritma_pembelian_ids" string="Product" filter_domain="[('algoritma_pembelian_ids.product_id.name','ilike', self)]"/>
-            
-            <filter string="Draft" name="status" domain="[('status','=', 'draft')]"/>
-            <filter string="To Approve" name="status" domain="[('status','=', 'to_approve')]"/>
-            <filter string="Approve" name="status" domain="[('status','=', 'approved')]"/>
-            <filter string="Done" name="status" domain="[('status','=', 'done')]"/>
-            
-            <group  string="Group By">
-                <filter name="Status" string="status" domain="[]" context="{'group_by': 'status'}" />
-            </group>
-        </search>
+            <search>
+                <field name="name" string="Name" filter_domain="[('name','ilike', self)]" />
+                <field name="algoritma_pembelian_ids" string="Product"
+                    filter_domain="[('algoritma_pembelian_ids.product_id.name','ilike', self)]" />
+
+                <filter string="Draft" name="status" domain="[('status','=', 'draft')]" />
+                <filter string="To Approve" name="status" domain="[('status','=', 'to_approve')]" />
+                <filter string="Approve" name="status" domain="[('status','=', 'approved')]" />
+                <filter string="Done" name="status" domain="[('status','=', 'done')]" />
+
+                <group string="Group By">
+                    <filter name="Status" string="status" domain="[]"
+                        context="{'group_by': 'status'}" />
+                </group>
+            </search>
 
 
         </field>
@@ -32,9 +54,9 @@
         <field name="model">algoritma.pembelian</field>
         <field name="arch" type="xml">
             <tree>
-                <field name="name"/>
-                <field name="tanggal"/>
-                <field name="status"/>
+                <field name="name" />
+                <field name="tanggal" />
+                <field name="status" />
             </tree>
         </field>
     </record>
@@ -46,62 +68,76 @@
             <form>
                 <header>
                     <!-- attrs= required/readonly/invisible -->
-                    <button type="object" name="func_to_approve" string="To Approve"  attrs="{'invisible': [('status', '!=', 'draft')]}" class="oe_highlight"/>
-                    <button type="object" name="func_approve" string="Approve" attrs="{'invisible': [('status', '!=', 'to_approve')]}" class="oe_highlight"/>
-                    <button type="object" name="func_done" string="Set to Done"  attrs="{'invisible': [('status', '!=', 'approve')]}" class="oe_highlight"/>
-                    <field name="status" widget="statusbar"/>
+                    <button type="object" name="func_to_approve" string="To Approve"
+                        attrs="{'invisible': [('status', '!=', 'draft')]}" class="oe_highlight" />
+                    <button type="object" name="func_approve" string="Approve"
+                        attrs="{'invisible': [('status', '!=', 'to_approve')]}" class="oe_highlight" />
+                    <button type="object" name="func_done" string="Set to Done"
+                        attrs="{'invisible': [('status', '!=', 'approve')]}" class="oe_highlight" />
+                    <field name="status" widget="statusbar" />
                 </header>
                 <sheet>
                     <group>
                         <group>
-                            <field name="name"  attrs="{'readonly': [('status', '!=', 'draft')]}"/>
-                            <field name="brand_ids" widget="many2many_tags" attrs="{'required': [('status', '=', 'draft')]}"/>
+                            <field name="name" attrs="{'readonly': [('status', '!=', 'draft')]}" />
+                            <field name="brand_ids" widget="many2many_tags"
+                                attrs="{'required': [('status', '=', 'draft')]}" />
                         </group>
                         <group>
-                            <field name="tanggal"/>
+                            <field name="tanggal" />
                         </group>
                     </group>
                     <notebook>
-							<page string="Product">
-								<field name="algoritma_pembelian_ids" nolable="1" options="'{reload_on_button':True}">
-									<tree edit="true" editable="bottom" create="true">
-										<!-- <field name="product_id" domain="[('type', '=', 'service' )]" /> -->
-										<field name="product_id" />
-										<field name="description" />
-										<field name="quantity" />
-										<field name="uom_id" />
-										<field name="price" />
-										<field name="sub_total" />
-									</tree>
-								</field>
-							</page>
-						</notebook>
+                        <page string="Product">
+                            <field name="algoritma_pembelian_ids" nolable="1"
+                                options="'{reload_on_button':True}">
+                                <tree edit="true" editable="bottom" create="true">
+                                    <!-- <field name="product_id" domain="[('type', '=', 'service'
+                                    )]" /> -->
+                                    <field name="product_id" />
+                                    <field name="description" />
+                                    <field name="quantity" />
+                                    <field name="uom_id" />
+                                    <field name="price" />
+                                    <field name="sub_total" />
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
                 </sheet>
             </form>
         </field>
     </record>
 
-<!--    view kanban-->
+    <!--    view kanban-->
     <record id="algoritma_pembelian_kanban_view_id" model="ir.ui.view">
         <field name="name">algoritma_pembelian_kanban_view_id</field>
         <field name="model">algoritma.pembelian</field>
         <field name="arch" type="xml">
             <kanban class="o_kanban_mobile">
-                <field name="name"/>
-                <field name="tanggal"/>
-                <field name="status"/>
+                <field name="name" />
+                <field name="tanggal" />
+                <field name="status" />
                 <templates>
                     <t t-name="kanban-box">
                         <div t-attf-class="oe_kanban_global_click">
                             <div class="o_kanban_record_top mb16">
-                                <strong><span><t t-esc="record.name.value"/></span></strong>
+                                <strong>
+                                    <span>
+                                        <t t-esc="record.name.value" />
+                                    </span>
+                                </strong>
                             </div>
                             <div class="o_kanban_record_bottom">
                                 <div class="oe_kanban_bottom_left">
-                                    <span><t t-esc="record.tanggal.value"/></span>
+                                    <span>
+                                        <t t-esc="record.tanggal.value" />
+                                    </span>
                                 </div>
                                 <div class="oe_kanban_bottom_right">
-                                    <span><t t-esc="record.status.value"/> </span>
+                                    <span>
+                                        <t t-esc="record.status.value" />
+                                    </span>
                                 </div>
                             </div>
                         </div>
@@ -115,7 +151,7 @@
         <field name="model">algoritma.brand</field>
         <field name="arch" type="xml">
             <tree>
-                <field name="name"/>
+                <field name="name" />
             </tree>
         </field>
     </record>
