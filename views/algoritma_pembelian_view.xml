@@ -15,8 +15,8 @@
                     </group>
                 </sheet>
                 <footer>
-                    <button type="object" name="" string="Submit" class="btn-primary"/>
-                    <button string="Cancel" class="btn-default" special="cancel"/>
+                    <button type="object" name="" string="Submit" class="btn-primary" />
+                    <button string="Cancel" class="btn-default" special="cancel" />
                 </footer>
             </form>
         </field>
@@ -155,4 +155,33 @@
             </tree>
         </field>
     </record>
+
+    <record id="new_inherit_product_template_id" model="ir.ui.view">
+        <field name="name">new_inherit_product_template_id</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_only_form_view" />
+        <field name="arch" type="xml">
+            <xpath expr="//form/header" position="inside">
+                <!-- <button name="func_approve" string="Approved" type="object"
+                class="oe_highlight" /> -->
+                <field name="status" widget="statusbar" />
+            </xpath>
+
+        </field>
+    </record>
+
+    <record id="new_inherit_stock_product_template_id" model="ir.ui.view">
+        <field name="name">new_inherit_stock_product_template_id</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="stock.product_template_form_view_procurement_button" />
+        <field name="arch" type="xml">
+            <xpath expr="//form/header/button[@name='action_update_quantity_on_hand']"
+                position="before">
+                <button name="func_approve" string="Approved" type="object"
+                    class="oe_highlight" />
+
+            </xpath>
+        </field>
+    </record>
+
 </odoo>

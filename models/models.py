@@ -100,6 +100,23 @@ class algoritma_pembelian_report_wizard(models.TransientModel):
     periode_awal = fields.Date('Periode Awal')
     periode_akhir = fields.Date('Periode Akhir')
     
+    
+    
+class product_template(models.Model):
+    _inherit = 'product.template'
+    
+    def func_approve(self):
+        if self.status == 'draft':
+            self.status == 'approved'
+    
+    status = fields.Selection([
+        ('draft', 'Draft'),
+        ('approved', 'Approved'),
+        ('done', 'Done'),
+    ], string='status', default="draft")
+    
+    
+    
 # -*- coding: utf-8 -*-
 
 #from odoo import models, fields, _
