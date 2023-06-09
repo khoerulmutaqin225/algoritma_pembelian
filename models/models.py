@@ -5,6 +5,23 @@ from odoo.exceptions import ValidationError
 class algoritma_pembelian(models.Model):
     _name = 'algoritma.pembelian'
     
+    def show_tree_view(self):
+        tree_view_id = self.env['ir.model.data'].xmlid_to_res_id('algoritma_pembelian.algoritma_pembelian_tree_view_id')
+        form_view_id = self.env['ir.model.data'].xmlid_to_res_id('algoritma_pembelian.algoritma_pembelian_form_view_id')
+        domain =[('status' , '=', 'draft')]
+        result={
+            'name': 'Pembelian B',
+            'type': 'ir.actions.act_window',
+            'views':[[tree_view_id, 'tree'],[form_view_id,'form']],
+            'target': 'current',
+            'res_model': 'algoritma.pembelian',
+            'domain': domain,
+            'limit': 40
+        }
+        return result
+        
+    
+    
     # Inherite res dari model algoritma.pembelian
     @api.model
     def create(self, values):
@@ -28,11 +45,12 @@ class algoritma_pembelian(models.Model):
     
     
     def func_to_approve(self):
-        if self.status == 'draft':
-            if self.name == 'New':
-                seq = self.env['ir.sequence'].next_by_code('algoritma.pembelian') or 'New'
-                self.name = seq
-            self.status = 'to_approve'
+        for line in self:
+            if line.status == 'draft':
+                if line.name == 'New':
+                    seq = self.env['ir.sequence'].next_by_code('algoritma.pembelian') or '/'
+                    line.name = seq
+                line.status = 'to_approve'
     
     def func_approve(self):
         if self.status == 'to_approve':
