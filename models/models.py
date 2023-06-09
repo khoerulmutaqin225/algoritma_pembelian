@@ -1,7 +1,31 @@
 from odoo import models, fields, _,api
+from datetime import date
+from odoo.exceptions import ValidationError
 
 class algoritma_pembelian(models.Model):
     _name = 'algoritma.pembelian'
+    
+    # Inherite res dari model algoritma.pembelian
+    @api.model
+    def create(self, values):
+        res = super(algoritma_pembelian, self).create(values)
+        for rec in res:
+            tanggal_pembelian = rec.tanggal
+            tanggal_sekarang = date.today()                      
+            if tanggal_pembelian < tanggal_sekarang:
+                raise ValidationError(("Tanggal yang anda inputkan tidak boleh kurang dari tanggal sekarang"))
+        return res
+    
+    
+    def write(self, values):
+        res = super(algoritma_pembelian, self).write(values)
+        if 'tanggal' in values:
+            tanggal_pembelian = self.tanggal
+            tanggal_sekarang = date.today()
+            if tanggal_pembelian < tanggal_sekarang:
+                  raise ValidationError(("Tidak bisa edit jika tanggal yang anda inputkan kurang dari tanggal sekarang"))
+        return res
+    
     
     def func_to_approve(self):
         if self.status == 'draft':
