@@ -74,6 +74,8 @@
                         attrs="{'invisible': [('status', '!=', 'to_approve')]}" class="oe_highlight" />
                     <button type="object" name="func_done" string="Set to Done"
                         attrs="{'invisible': [('status', '!=', 'approve')]}" class="oe_highlight" />
+                    <button type="object" name="get_excel_report" string="Print Excel Report"/>
+
                     <field name="status" widget="statusbar" />
                 </header>
                 <sheet>

@@ -5,6 +5,13 @@ from odoo.exceptions import ValidationError
 class algoritma_pembelian(models.Model):
     _name = 'algoritma.pembelian'
     
+    def get_excel_report(self):
+        return {
+            'type': 'ir.actions.act_url',
+            'url'  : '/algoritma_pembelian/algoritma_pembelian_report_excel/%s' % (self.id),
+            'target' : 'new',  
+        }
+    
     def func_delete_status_draft(self):
         algoritma_pembelian_obj = self.env['algoritma.pembelian'].search([('status', '=', 'draft')])
         for line in algoritma_pembelian_obj:
