@@ -39,4 +39,11 @@
             sequence="3"
             parent="algoritma_pembelian.parent_algoritma_pembelian_id"
             action="algoritma_pembelian.actions_algoritma_pembelian_report_wizard_id"/>
+
+        <menuitem
+            id="child_import_algoritma_pembelian_wizard_id"
+            name="Import"
+            sequence="4"
+            parent="algoritma_pembelian.parent_algoritma_pembelian_id"
+            action="algoritma_pembelian.actions_wiz_import_algoritma_pembelian"/>
 </odoo>

@@ -1,6 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
 
+    <record id="wizard_form_algoritma_pembelian_id" model="ir.ui.view">
+        <field name="name">wizard_form_algoritma_pembelian_id</field>
+        <field name="model">base_import.import</field>
+        <field name="arch" type="xml">
+            <form string="Import Algoritma Pembelian">
+                <div style="padding-left:5px;">
+                    <field name="file_import" required="1" filename="file_name_import" />
+                    <field name="file_name_import" invisible="1" />
+                    Or <a href="../algoritma_pembelian/static/template/algoritma_pembelian_template.xlsx" target="_new">
+                    Download Template
+                    </a>
+                </div>
+                <footer>
+                    <button string="Import" name="action_import_algoritma_pembelian" type="object"  class="oe_highlight" />
+                    <button string="Cancel" special="cancel"  class="oe_link" />
+                </footer>
+            
+            </form>
+        </field>
+    </record>
 
     <record id="algoritma_pembelian_report_wizard_view_id" model="ir.ui.view">
         <field name="name">algoritma_pembelian_report_wizard_view_id</field>
@@ -166,7 +186,7 @@
             <xpath expr="//form/header" position="inside">
                 <!-- <button name="func_approve" string="Approved" type="object"
                 class="oe_highlight" /> -->
-                 <field name="status" widget="statusbar" />
+                <field name="status" widget="statusbar" />
             </xpath>
 
         </field>
