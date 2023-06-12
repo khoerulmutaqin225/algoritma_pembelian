@@ -29,6 +29,7 @@
         'views/algoritma_pembelian_menuitem.xml',
         'views/algoritma_pembelian_sequence.xml',
         'views/algoritma_pembelian_cron.xml',
+        'reports/algoritma_pembelian_qweb',
     ],
     # only loaded in demonstration mode
     'demo': [
