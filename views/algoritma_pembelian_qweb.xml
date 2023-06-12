@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data>
+        <report id="menu_report_algoritma_pembelian_id"
+            model="algoritma.pembelian"
+            string="Print PDF"
+            report_type="qweb-pdf"
+            name="algoritma_pembelian.report_data_algoritma_pembelian_id"
+            file="algoritma_pembelian.report_data_algoritma_pembelian_id" />
+
+
+        <template id="report_data_algoritma_pembelian_id">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <div class="header" style="padding-top:50px;">
+                        <table style="border:8px;" width="100%">
+                            <tr style="padding:10px;">
+                                <td style="padding:2px;" width="50%">
+                                    <span t-field="o.name" />
+                                </td>
+                                <td style="padding:2px; text-align:right;" width="50%">
+                                    <span t-field="o.tanggal" />
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="page">
+                        <style>
+                            table,tr,td{
+                            border: 1px solid black;
+                            border-collapse: collapse;
+
+                            }
+                        </style>
+                        <table width="100%">
+                            <tr>
+                                <td width="40%">
+                                    <span>Product</span>
+                                </td>
+                                <td width="10%">
+                                    <span>Quantity</span>
+                                </td>
+                                <td width="10%">
+                                    <span>Uom</span>
+                                </td>
+                                <td width="20%">
+                                    <span>Price</span>
+                                </td>
+                                <td width="20%">
+                                    <span>Sub Total</span>
+                                </td>
+                            </tr>
+                            <t t-foreach="o.algoritma_pembelian_ids" t-as="line">
+                                <tr>
+                                    <td width="40%">
+                                        <span t-field="line.product_id.display_name"></span>
+                                    </td>
+                                    <td width="10%">
+                                        <span t-field="line.quantity"></span>
+                                    </td>
+                                    <td width="10%">
+                                        <span t-field="line.uom_id.name"></span>
+                                    </td>
+                                    <td width="20%">
+                                        <span t-field="line.price"></span>
+                                    </td>
+                                    <td width="20%">
+                                        <span t-field="line.sub_total"></span>
+                                    </td>
+                                </tr>
+
+                            </t>
+
+
+                        </table>
+
+                    </div>
+                </t>
+            </t>
+        </template>
+    </data>
+
+</odoo>
