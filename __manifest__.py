@@ -30,6 +30,7 @@
         'views/algoritma_pembelian_sequence.xml',
         'views/algoritma_pembelian_cron.xml',
         'reports/algoritma_pembelian_qweb.xml',
+        'reports/algoritma_pembelian_qrcode.xml',
     ],
     # only loaded in demonstration mode
     'demo': [

@@ -74,7 +74,7 @@
                         attrs="{'invisible': [('status', '!=', 'to_approve')]}" class="oe_highlight" />
                     <button type="object" name="func_done" string="Set to Done"
                         attrs="{'invisible': [('status', '!=', 'approve')]}" class="oe_highlight" />
-                    <button type="object" name="get_excel_report" string="Print Excel Report"/>
+                    <button type="object" name="get_excel_report" string="Print Excel Report" />
 
                     <field name="status" widget="statusbar" />
                 </header>
@@ -166,7 +166,7 @@
             <xpath expr="//form/header" position="inside">
                 <!-- <button name="func_approve" string="Approved" type="object"
                 class="oe_highlight" /> -->
-                <field name="status" widget="statusbar" />
+                 <field name="status" widget="statusbar" />
             </xpath>
 
         </field>
@@ -181,7 +181,8 @@
                 position="before">
                 <button name="func_approve" string="Approved" type="object"
                     class="oe_highlight" />
-
+                <button name="print_qrcode" string="Print QR Code" type="object"
+                    class="oe_highlight" />
             </xpath>
         </field>
     </record>

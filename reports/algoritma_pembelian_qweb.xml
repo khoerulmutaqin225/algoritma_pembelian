@@ -76,6 +76,17 @@
                         </table>
 
                     </div>
+                    <div>
+                        <table>
+                            <tr>
+                                <td width="100%">
+                                    <span t-field="o.name"
+                                        t-options="{'widget': 'barcode', 'humanreadable':0, 'width':400,
+                            'height':50 }" />
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
                 </t>
             </t>
         </template>

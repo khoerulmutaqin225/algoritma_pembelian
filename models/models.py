@@ -137,15 +137,31 @@ class algoritma_pembelian_report_wizard(models.TransientModel):
 class product_template(models.Model):
     _inherit = 'product.template'
     
+    def _get_product_qrcode(self):
+        for rec in self:
+            rec.product_qrcode = str(rec.id)
+                       
     def func_approve(self):
         if self.status == 'draft':
             self.status == 'approved'
+    
+    def print_qrcode(self):
+        return{
+            'type': 'ir.actions.report',
+            'report_name'  : 'algoritma_pembelian.report_algoritma_pembelian_qrcode_id',
+            'report_type' : 'qweb-pdf',  
+        }
     
     status = fields.Selection([
         ('draft', 'Draft'),
         ('approved', 'Approved'),
         ('done', 'Done'),
     ], string='status', default="draft")
+    
+    product_qrcode = fields.Char(
+        'Product QR Code',
+        compute= _get_product_qrcode
+    )
     
     
     
