@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "Custome Pembelian V6",
+    'name': "Odoo Development",
 
     'summary': """
         Module Custome Pembelian """,
