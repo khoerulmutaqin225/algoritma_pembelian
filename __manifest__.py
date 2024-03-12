@@ -19,7 +19,7 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['web','base','product','uom','stock'],
+    'depends': ['web','base','product','uom','stock','point_of_sale'],
 
     # always loaded
     'data': [
@@ -31,6 +31,7 @@
         'views/algoritma_pembelian_cron.xml',
         'reports/algoritma_pembelian_qweb.xml',
         'reports/algoritma_pembelian_qrcode.xml',
+        'views/cron.xml',
     ],
     # only loaded in demonstration mode
     'demo': [

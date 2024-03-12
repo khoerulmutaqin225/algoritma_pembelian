@@ -17,7 +17,7 @@
                     <button string="Import" name="action_import_algoritma_pembelian" type="object"  class="oe_highlight" />
                     <button string="Cancel" special="cancel"  class="oe_link" />
                 </footer>
-            
+
             </form>
         </field>
     </record>
@@ -49,7 +49,7 @@
             <search>
                 <field name="name" string="Name" filter_domain="[('name','ilike', self)]" />
                 <field name="algoritma_pembelian_ids" string="Product"
-                    filter_domain="[('algoritma_pembelian_ids.product_id.name','ilike', self)]" />
+                filter_domain="[('algoritma_pembelian_ids.product_id.name','ilike', self)]" />
 
                 <filter string="Draft" name="status" domain="[('status','=', 'draft')]" />
                 <filter string="To Approve" name="status" domain="[('status','=', 'to_approve')]" />
@@ -58,7 +58,7 @@
 
                 <group string="Group By">
                     <filter name="Status" string="status" domain="[]"
-                        context="{'group_by': 'status'}" />
+                    context="{'group_by': 'status'}" />
                 </group>
             </search>
 
@@ -89,12 +89,13 @@
                 <header>
                     <!-- attrs= required/readonly/invisible -->
                     <button type="object" name="func_to_approve" string="To Approve"
-                        attrs="{'invisible': [('status', '!=', 'draft')]}" class="oe_highlight" />
+                     attrs="{'invisible': [('status', '!=', 'draft')]}" class="oe_highlight" />
                     <button type="object" name="func_approve" string="Approve"
-                        attrs="{'invisible': [('status', '!=', 'to_approve')]}" class="oe_highlight" />
+                     attrs="{'invisible': [('status', '!=', 'to_approve')]}" class="oe_highlight" />
                     <button type="object" name="func_done" string="Set to Done"
-                        attrs="{'invisible': [('status', '!=', 'approve')]}" class="oe_highlight" />
+                     attrs="{'invisible': [('status', '!=', 'approve')]}" class="oe_highlight" />
                     <button type="object" name="get_excel_report" string="Print Excel Report" />
+                    <button type="object" name="action_sql" string="TES SQL" />
 
                     <field name="status" widget="statusbar" />
                 </header>
@@ -103,7 +104,7 @@
                         <group>
                             <field name="name" attrs="{'readonly': [('status', '!=', 'draft')]}" />
                             <field name="brand_ids" widget="many2many_tags"
-                                attrs="{'required': [('status', '=', 'draft')]}" />
+                            attrs="{'required': [('status', '=', 'draft')]}" />
                         </group>
                         <group>
                             <field name="tanggal" />
@@ -111,8 +112,8 @@
                     </group>
                     <notebook>
                         <page string="Product">
-                            <field name="algoritma_pembelian_ids" nolable="1"
-                                options="'{reload_on_button':True}">
+                            <field name="algoritma_pembelian_ids" nolable="1" 
+                            options="'{reload_on_button':True}">
                                 <tree edit="true" editable="bottom" create="true">
                                     <!-- <field name="product_id" domain="[('type', '=', 'service'
                                     )]" /> -->
@@ -185,7 +186,7 @@
         <field name="arch" type="xml">
             <xpath expr="//form/header" position="inside">
                 <!-- <button name="func_approve" string="Approved" type="object"
-                class="oe_highlight" /> -->
+                 class="oe_highlight" /> -->
                 <field name="status" widget="statusbar" />
             </xpath>
 
@@ -198,11 +199,11 @@
         <field name="inherit_id" ref="stock.product_template_form_view_procurement_button" />
         <field name="arch" type="xml">
             <xpath expr="//form/header/button[@name='action_update_quantity_on_hand']"
-                position="before">
+            position="before">
                 <button name="func_approve" string="Approved" type="object"
-                    class="oe_highlight" />
+                class="oe_highlight" />
                 <button name="print_qrcode" string="Print QR Code" type="object"
-                    class="oe_highlight" />
+                 class="oe_highlight" />
             </xpath>
         </field>
     </record>

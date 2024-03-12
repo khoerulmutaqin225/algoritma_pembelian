@@ -3,7 +3,8 @@
     <menuitem
         id="parent_algoritma_pembelian_id"
         name="Pembelian"
-        sequence="5" />
+        sequence="5" 
+        web_icon="algoritma_pembelian,static/description/icon.png" />
 
                 <menuitem
                     id="child_algoritma_pembelian_id"

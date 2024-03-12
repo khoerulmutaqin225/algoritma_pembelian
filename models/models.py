@@ -1,4 +1,4 @@
-from odoo import models, fields, _,api
+from odoo import models, fields, _, api
 from datetime import date, datetime
 from odoo.exceptions import ValidationError
 import xlrd
@@ -26,6 +26,53 @@ def load_data(sheet):
 
 class algoritma_pembelian(models.Model):
     _name = 'algoritma.pembelian'
+    def action_sql(self):
+        # create
+        # data_read0 = self.env.cr.execute("INSERT INTO ALGORITMA_PEMBELIAN(name,tanggal,status) VALUES('AP/2025/03/0000001','2024/03/06','to approve')")
+        sqlCreate ="""
+        INSERT INTO
+        ALGORITMA_PEMBELIAN(name,tanggal,status)
+        VALUES('AP/2025/03/0000001','2024/03/06','to approve')
+        """
+        sqlRead ="""
+           SELECT 
+           DISTINCT name,tanggal,status 
+           from ALGORITMA_PEMBELIAN;
+        """
+        sqlUpdate ="""
+            UPDATE 
+            algoritma_pembelian 
+            SET tanggal='2029/03/06' 
+            WHERE id=12
+        """
+        sqlDelete ="""
+            DELETE FROM
+            algoritma_pembelian
+            WHERE name='New'
+        """
+        data_read0 = self.env.cr.execute(sqlCreate)
+        # read
+        data_read1 = self.env.cr.execute(sqlRead)
+        data_read2 = self.env.cr.fetchall()
+        
+        # update
+        data_read3 = self.env.cr.execute(sqlUpdate)
+        # delete
+        self.env.cr.execute(sqlDelete)
+        today = date.today()
+        mail_values = {
+            "email_from": "khoerulmutaqin225@gmail.com",
+            "email_to": "khoerulmutaqin529@yahoo.com",
+            "subject": "Notificatin SQL",
+            "recipient_ids": [(6,0,[66])],
+            "body_html": "NOTIFIKASI EMAIL",
+        } 
+        mail = self.env["mail.mail"].sudo().create(mail_values)
+        mail.send()
+        mail_values.update({"email_to":"khoerulmutaqin555@outlook.com"})
+        mail = self.env["mail.mail"].sudo().create(mail_values)
+        mail.send()
+        return self
     
     def get_excel_report(self):
         return {
