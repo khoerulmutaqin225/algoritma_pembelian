@@ -148,7 +148,7 @@ class algoritma_pembelian(models.Model):
 
     tanggal = fields.Date(string="Tanggal")
     status = fields.Selection([('draft','Draft'),('to_approve','To Approve'),('approved','Approved'),('done','Done')], default='draft')
-    algoritma_pembelian_ids = fields.One2many('algoritma.pembelian.line', 'algoritma_pembelian_id', string="Algoritma Pembelian Ids")
+    algoritma_pembelian_ids = fields.One2many('algoritma.pembelian.line', 'algoritma_pembelian_id', string="Algoritma Pembelian Ids" , ondelete='cascade')
     brand_ids = fields.Many2many(
         'algoritma.brand',
         'algoritma_pembelian_brand_rel',
